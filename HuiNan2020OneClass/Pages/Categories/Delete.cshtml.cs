@@ -21,6 +21,8 @@ namespace HuiNan2020OneClass.Pages.Categories
         [BindProperty]
         public Category Category { get; set; }
 
+        public string ErrMsg { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -43,12 +45,22 @@ namespace HuiNan2020OneClass.Pages.Categories
             {
                 return NotFound();
             }
+            
 
             Category = await _context.Category.FindAsync(id);
 
+            if (Category.IsSystem == true)
+            {
+                ErrMsg = "系统预设，不能删除";
+                return Page();
+
+            }
+
             if (Category != null)
             {
-                _context.Category.Remove(Category);
+                Category.IsDelete = true;
+                _context.Attach(Category).State = EntityState.Modified;
+                //_context.Category.Remove(Category);
                 await _context.SaveChangesAsync();
             }
 

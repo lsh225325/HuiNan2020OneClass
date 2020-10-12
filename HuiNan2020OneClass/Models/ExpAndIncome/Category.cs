@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HuiNan2020OneClass
 {
-    public class Category:Base
+    public class Category : Base
     {
         /// <summary>
         /// 收支类别
@@ -22,6 +22,8 @@ namespace HuiNan2020OneClass
         [Required]
         [Display(Name = "收支")]
         public IncomOrExpense IncomOrExp { get; set; }
+
+        public bool IsSystem { get; set; } = false;
 
     }
 }

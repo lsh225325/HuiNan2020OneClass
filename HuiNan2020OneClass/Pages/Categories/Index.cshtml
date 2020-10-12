@@ -27,10 +27,13 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Category) {
+@foreach (var item in Model.Category)
+{
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
+                <a asp-page="./Edit" asp-route-id="@item.ID">
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IncomOrExp)
@@ -40,9 +43,17 @@
                 @Html.DisplayFor(modelItem => item.IsDelete)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger" >Delete</a>
+                @{
+                    if (item.IsDelete == true)
+                    {
+                        <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-primary">启用</a> 
+                        
+                    }
+                }
+
+
+
             </td>
         </tr>
 }

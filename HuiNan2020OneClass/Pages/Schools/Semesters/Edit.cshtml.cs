@@ -6,10 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using HuiNan2020OneClass;
-using System.Linq.Expressions;
+using HuiNan2020OneClass.Models;
 
-namespace HuiNan2020OneClass.Pages.Categories
+namespace HuiNan2020OneClass.Pages.Schools.Semesters
 {
     public class EditModel : PageModel
     {
@@ -21,10 +20,8 @@ namespace HuiNan2020OneClass.Pages.Categories
         }
 
         [BindProperty]
-        public Category Category { get; set; }
+        public Semester Semester { get; set; }
         public string ErrMsg { get; set; }
-
-        
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -33,13 +30,16 @@ namespace HuiNan2020OneClass.Pages.Categories
                 return NotFound();
             }
 
-            Category = await _context.Category.FirstOrDefaultAsync(m => m.ID == id);
+            Semester = await _context.Semester.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Category == null)
+
+
+            if (Semester == null)
             {
                 return NotFound();
             }
-            
+
+           
             return Page();
         }
 
@@ -51,30 +51,26 @@ namespace HuiNan2020OneClass.Pages.Categories
             {
                 return Page();
             }
-            if (_context.Category.FirstOrDefault(m => m.CategoryName == Category.CategoryName) != null)
+
+            if (_context.Semester.FirstOrDefault(m => m.SemesterName == Semester.SemesterName) != null)
             {
-                ErrMsg = "类别重复";
+                ErrMsg = "学期重复";
 
                 return Page();
             }
 
+            _context.Attach(Semester).State = EntityState.Modified;
 
-            if(_context.Exp.FirstOrDefault(m=>m.CategoryID== Category.ID)!=null|| _context.Income.FirstOrDefault(m => m.CategoryID == Category.ID) != null)
-            {
-                ErrMsg = "已使用，不能修改";
-
-                return Page();
-            }
-
-            _context.Attach(Category).State = EntityState.Modified;
-
+            
+            
+            
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(Category.ID))
+                if (!SemesterExists(Semester.ID))
                 {
                     return NotFound();
                 }
@@ -87,9 +83,9 @@ namespace HuiNan2020OneClass.Pages.Categories
             return RedirectToPage("./Index");
         }
 
-        private bool CategoryExists(int id)
+        private bool SemesterExists(int id)
         {
-            return _context.Category.Any(e => e.ID == id);
+            return _context.Semester.Any(e => e.ID == id);
         }
     }
 }

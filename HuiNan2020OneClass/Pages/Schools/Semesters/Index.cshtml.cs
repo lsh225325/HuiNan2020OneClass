@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using HuiNan2020OneClass;
+using HuiNan2020OneClass.Models;
 
-namespace HuiNan2020OneClass.Pages.Incomes
+namespace HuiNan2020OneClass.Pages.Schools.Semesters
 {
     public class IndexModel : PageModel
     {
@@ -18,12 +18,11 @@ namespace HuiNan2020OneClass.Pages.Incomes
             _context = context;
         }
 
-        public IList<Income> Income { get;set; }
+        public IList<Semester> Semester { get;set; }
 
         public async Task OnGetAsync()
         {
-            Income = await _context.Income.OrderByDescending(m=>m.ReData)
-                .Include(i => i.Category).ToListAsync();
+            Semester = await _context.Semester.ToListAsync();
         }
     }
 }

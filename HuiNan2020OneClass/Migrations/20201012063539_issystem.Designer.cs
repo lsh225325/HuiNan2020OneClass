@@ -3,14 +3,16 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HuiNan2020OneClass.Migrations
 {
     [DbContext(typeof(AppContext))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [Migration("20201012063539_issystem")]
+    partial class issystem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -233,68 +235,6 @@ namespace HuiNan2020OneClass.Migrations
                     b.ToTable("Income");
                 });
 
-            modelBuilder.Entity("HuiNan2020OneClass.Models.Semester", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatUserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SemesterName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Semester");
-                });
-
-            modelBuilder.Entity("HuiNan2020OneClass.SchoolTerm", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatUserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SchoolYear")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SemesterID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("SemesterID");
-
-                    b.ToTable("SchoolTerm");
-                });
-
             modelBuilder.Entity("HuiNan2020OneClass.Sex", b =>
                 {
                     b.Property<int>("ID")
@@ -413,15 +353,6 @@ namespace HuiNan2020OneClass.Migrations
                     b.HasOne("HuiNan2020OneClass.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("HuiNan2020OneClass.SchoolTerm", b =>
-                {
-                    b.HasOne("HuiNan2020OneClass.Models.Semester", "Semester")
-                        .WithMany()
-                        .HasForeignKey("SemesterID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

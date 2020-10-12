@@ -3,14 +3,16 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HuiNan2020OneClass.Migrations
 {
     [DbContext(typeof(AppContext))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [Migration("20201012082635_InSchool")]
+    partial class InSchool
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -276,13 +278,10 @@ namespace HuiNan2020OneClass.Migrations
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("SchoolYear")
                         .HasColumnType("int");
 
-                    b.Property<int>("SemesterID")
+                    b.Property<int?>("SemesterID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateTime")
@@ -421,9 +420,7 @@ namespace HuiNan2020OneClass.Migrations
                 {
                     b.HasOne("HuiNan2020OneClass.Models.Semester", "Semester")
                         .WithMany()
-                        .HasForeignKey("SemesterID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SemesterID");
                 });
 
             modelBuilder.Entity("HuiNan2020OneClass.Student", b =>

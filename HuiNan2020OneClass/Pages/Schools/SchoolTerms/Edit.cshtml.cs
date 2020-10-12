@@ -7,9 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HuiNan2020OneClass;
-using System.Linq.Expressions;
 
-namespace HuiNan2020OneClass.Pages.Categories
+namespace HuiNan2020OneClass.Pages.Schools.SchoolTerms
 {
     public class EditModel : PageModel
     {
@@ -21,10 +20,7 @@ namespace HuiNan2020OneClass.Pages.Categories
         }
 
         [BindProperty]
-        public Category Category { get; set; }
-        public string ErrMsg { get; set; }
-
-        
+        public SchoolTerm SchoolTerm { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -33,13 +29,14 @@ namespace HuiNan2020OneClass.Pages.Categories
                 return NotFound();
             }
 
-            Category = await _context.Category.FirstOrDefaultAsync(m => m.ID == id);
+            SchoolTerm = await _context.SchoolTerm
+                .Include(s => s.Semester).FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Category == null)
+            if (SchoolTerm == null)
             {
                 return NotFound();
             }
-            
+           ViewData["SemesterID"] = new SelectList(_context.Semester, "ID", "ID");
             return Page();
         }
 
@@ -51,22 +48,8 @@ namespace HuiNan2020OneClass.Pages.Categories
             {
                 return Page();
             }
-            if (_context.Category.FirstOrDefault(m => m.CategoryName == Category.CategoryName) != null)
-            {
-                ErrMsg = "类别重复";
 
-                return Page();
-            }
-
-
-            if(_context.Exp.FirstOrDefault(m=>m.CategoryID== Category.ID)!=null|| _context.Income.FirstOrDefault(m => m.CategoryID == Category.ID) != null)
-            {
-                ErrMsg = "已使用，不能修改";
-
-                return Page();
-            }
-
-            _context.Attach(Category).State = EntityState.Modified;
+            _context.Attach(SchoolTerm).State = EntityState.Modified;
 
             try
             {
@@ -74,7 +57,7 @@ namespace HuiNan2020OneClass.Pages.Categories
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(Category.ID))
+                if (!SchoolTermExists(SchoolTerm.ID))
                 {
                     return NotFound();
                 }
@@ -87,9 +70,9 @@ namespace HuiNan2020OneClass.Pages.Categories
             return RedirectToPage("./Index");
         }
 
-        private bool CategoryExists(int id)
+        private bool SchoolTermExists(int id)
         {
-            return _context.Category.Any(e => e.ID == id);
+            return _context.SchoolTerm.Any(e => e.ID == id);
         }
     }
 }

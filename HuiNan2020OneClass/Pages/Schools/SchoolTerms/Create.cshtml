@@ -1,0 +1,42 @@
+﻿@page
+@model HuiNan2020OneClass.Pages.Schools.SchoolTerms.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>生成学期</h1>
+
+<h5>设置好开始日期和结束日期，自动生成各学期（数据成如“2020年下学期”）</h5>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">开始学年</label>
+                <input asp-for="BeginYear" class="form-control" />
+                <span asp-validation-for="BeginYear" class="text-danger"></span>
+                <a  class="text-danger">@Model.ErrMsg</a>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label">结束学年</label>
+                <input asp-for="EndYear" class="form-control" />
+                <span asp-validation-for="EndYear" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

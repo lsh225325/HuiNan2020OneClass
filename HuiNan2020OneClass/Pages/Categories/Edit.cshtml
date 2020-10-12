@@ -8,6 +8,7 @@
 <h1>Edit</h1>
 
 <h4>Category</h4>
+<a class="text-danger">@Model.ErrMsg</a>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,14 +19,10 @@
                 <input asp-for="Category.CategoryName" class="form-control" />
                 <span asp-validation-for="Category.CategoryName" class="text-danger"></span>
                 <a lass="text-danger">@Model.ErrMsg</a>
-            </div>
-            <div class="form-group">
-                <label asp-for="Category.IncomOrExp" class="control-label"></label>
-                <select asp-for="Category.IncomOrExp" asp-items="@Html.GetEnumSelectList<IncomOrExpense>()"  class="form-control"></select>
-                <span asp-validation-for="Category.IncomOrExp" class="text-danger"></span>
-            </div>
+            </div>            
             <input type="hidden" asp-for="Category.ID" />
-           
+            <input type="hidden" asp-for="Category.IncomOrExp" />
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

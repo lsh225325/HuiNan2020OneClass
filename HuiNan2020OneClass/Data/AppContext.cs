@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using HuiNan2020OneClass;
 using System.Threading;
+using HuiNan2020OneClass.Models;
 
 public class AppContext : DbContext
     {
@@ -67,6 +68,10 @@ public class AppContext : DbContext
         public DbSet<HuiNan2020OneClass.Income> Income { get; set; }
 
         public DbSet<HuiNan2020OneClass.Student> Student { get; set; }
+
+        public DbSet<HuiNan2020OneClass.SchoolTerm> SchoolTerm { get; set; }
+
+        public DbSet<HuiNan2020OneClass.Models.Semester> Semester { get; set; }
 
 
 

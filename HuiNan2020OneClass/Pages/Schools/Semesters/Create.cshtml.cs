@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using HuiNan2020OneClass;
+using HuiNan2020OneClass.Models;
 
-namespace HuiNan2020OneClass.Pages.Incomes
+namespace HuiNan2020OneClass.Pages.Schools.Semesters
 {
     public class CreateModel : PageModel
     {
@@ -19,13 +19,13 @@ namespace HuiNan2020OneClass.Pages.Incomes
         }
 
         public IActionResult OnGet()
-        {            
-            ViewData["CategoryID"] = new SelectList(_context.Category.Where(m => m.IncomOrExp == IncomOrExpense.收入), "ID", "CategoryName");
+        {
             return Page();
         }
 
         [BindProperty]
-        public Income Income { get; set; }
+        public Semester Semester { get; set; }
+        public string ErrMsg { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -36,7 +36,15 @@ namespace HuiNan2020OneClass.Pages.Incomes
                 return Page();
             }
 
-            _context.Income.Add(Income);
+            if (_context.Semester.FirstOrDefault(m=>m.SemesterName== Semester.SemesterName)!=null)
+            {
+                ErrMsg = "学期重复";
+
+                return Page();
+            }
+
+
+            _context.Semester.Add(Semester);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
