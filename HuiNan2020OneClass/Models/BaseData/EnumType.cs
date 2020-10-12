@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace HuiNan2020OneClass
 {
-    public enum Sexee
+    public enum Level
     {
+        小学=0,
+        初中=1
         
     }
 

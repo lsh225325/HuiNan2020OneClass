@@ -20,7 +20,7 @@ namespace HuiNan2020OneClass.Pages.Exps
 
         public IActionResult OnGet()
         {
-        ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "CategoryName");
+        ViewData["CategoryID"] = new SelectList(_context.Category.Where(m=>m.IncomOrExp==0), "ID", "CategoryName");
             return Page();
         }
 

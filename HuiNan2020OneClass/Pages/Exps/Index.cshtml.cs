@@ -22,7 +22,7 @@ namespace HuiNan2020OneClass.Pages.Exps
 
         public async Task OnGetAsync()
         {
-            Exp = await _context.Exp
+            Exp = await _context.Exp.OrderByDescending(m=>m.ReData)
                 .Include(e => e.Category).ToListAsync();
         }
     }

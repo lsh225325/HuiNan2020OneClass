@@ -8,6 +8,9 @@ namespace HuiNan2020OneClass
 {
     public class Student:Base
     {
+        /// <summary>
+        /// 学生姓名
+        /// </summary>
         [Required]
         [Display(Name = "姓名")]
 

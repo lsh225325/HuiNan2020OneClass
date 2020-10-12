@@ -16,11 +16,13 @@ namespace HuiNan2020OneClass
         /// <summary>
         /// 创建时间
         /// </summary>
+        [Display(Name ="建立时间")]
         public DateTime CreatTime { get; set; }
 
         /// <summary>
         /// 修改时间
         /// </summary>
+        [Display(Name ="修改时间")]
         public DateTime UpdateTime { get; set; } = DateTime.Now;
 
         /// <summary>
