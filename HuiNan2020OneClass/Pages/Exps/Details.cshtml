@@ -1,0 +1,73 @@
+﻿@page
+@model HuiNan2020OneClass.Pages.Exps.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Exp</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Exp.ReData)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Exp.ReData)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Exp.Rdmark)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Exp.Rdmark)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Exp.Money)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Exp.Money)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Exp.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Exp.Category.CategoryName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Exp.JBR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Exp.JBR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Exp.CreatTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Exp.CreatTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Exp.UpdateTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Exp.UpdateTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Exp.CreatUserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Exp.CreatUserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Exp.IsDelete)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Exp.IsDelete)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Exp.ID" class="btn btn-primary">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

@@ -3,14 +3,16 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HuiNan2020OneClass.Migrations
 {
     [DbContext(typeof(AppContext))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [Migration("20201012020852_Income")]
+    partial class Income
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -254,68 +256,6 @@ namespace HuiNan2020OneClass.Migrations
                     b.ToTable("Sex");
                 });
 
-            modelBuilder.Entity("HuiNan2020OneClass.Student", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Borthday")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("CreatTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatUserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("EnrollmentTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("GradeClassID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Ident")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Pic")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QQ")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SexID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Weixin")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("GradeClassID");
-
-                    b.HasIndex("SexID");
-
-                    b.ToTable("Student");
-                });
-
             modelBuilder.Entity("HuiNan2020OneClass.Exp", b =>
                 {
                     b.HasOne("HuiNan2020OneClass.Category", "Category")
@@ -345,21 +285,6 @@ namespace HuiNan2020OneClass.Migrations
                     b.HasOne("HuiNan2020OneClass.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("HuiNan2020OneClass.Student", b =>
-                {
-                    b.HasOne("HuiNan2020OneClass.GradeClass", "GradeClass")
-                        .WithMany()
-                        .HasForeignKey("GradeClassID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HuiNan2020OneClass.Sex", "Sex")
-                        .WithMany()
-                        .HasForeignKey("SexID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

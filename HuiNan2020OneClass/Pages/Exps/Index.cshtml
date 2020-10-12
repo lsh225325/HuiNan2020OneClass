@@ -1,0 +1,67 @@
+﻿@page
+@model HuiNan2020OneClass.Pages.Exps.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                支出日期
+            </th>
+            <th>
+                说明
+            </th>
+            <th>
+                金额
+            </th>
+            <th>
+                类别
+            </th>
+            <th>
+                经办人
+            </th>           
+            <th>
+                @Html.DisplayNameFor(model => model.Exp[0].IsDelete)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Exp) {
+        <tr>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.ID">                  
+                    @Html.DisplayFor(modelItem => item.ReData)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rdmark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Money)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JBR)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDelete)
+            </td>
+            <td>
+                <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger" >Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

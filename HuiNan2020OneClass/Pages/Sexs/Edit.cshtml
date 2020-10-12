@@ -1,0 +1,55 @@
+﻿@page
+@model HuiNan2020OneClass.Pages.Sexs.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Sex</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Sex.SexType" class="control-label"></label>
+                <input asp-for="Sex.SexType" class="form-control" />
+                <span asp-validation-for="Sex.SexType" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Sex.ID" />
+            <div class="form-group">
+                <label asp-for="Sex.CreatTime" class="control-label"></label>
+                <input asp-for="Sex.CreatTime" class="form-control" />
+                <span asp-validation-for="Sex.CreatTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sex.UpdateTime" class="control-label"></label>
+                <input asp-for="Sex.UpdateTime" class="form-control" />
+                <span asp-validation-for="Sex.UpdateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sex.CreatUserName" class="control-label"></label>
+                <input asp-for="Sex.CreatUserName" class="form-control" />
+                <span asp-validation-for="Sex.CreatUserName" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Sex.IsDelete" /> @Html.DisplayNameFor(model => model.Sex.IsDelete)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

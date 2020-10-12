@@ -8,12 +8,18 @@ namespace HuiNan2020OneClass
     public class GradeClass:Base
     {
         public int ClassNuberID { get; set; }
-        public int GradeID { get; set; }
-
         public ClassNuber ClassNuber { get; set; }
+
+
+
+        public int GradeID { get; set; }        
         public Grade Grade { get; set; }
 
 
+        /// <summary>
+        /// 班级名称：一年级1班,自动生成
+        /// </summary>
+        public string ClassName { get; set; }
 
 
         /// <summary>
