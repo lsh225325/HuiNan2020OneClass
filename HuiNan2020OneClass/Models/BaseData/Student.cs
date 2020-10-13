@@ -31,8 +31,8 @@ namespace HuiNan2020OneClass
         public int GradeClassID { get; set; }
 
 
-        [Display(Name = "班级")]
-        public GradeClass GradeClass { get; set; }
+        //[Display(Name = "班级")]
+        //public GradeClass GradeClass { get; set; }
 
         [Required]
         [Display(Name = "生日")]

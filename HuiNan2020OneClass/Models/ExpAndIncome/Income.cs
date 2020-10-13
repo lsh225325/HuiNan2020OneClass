@@ -8,6 +8,13 @@ namespace HuiNan2020OneClass
 {
     public class Income:Base
     {
+        /// <summary>
+        /// 班费收入
+        /// </summary>
+
+        public int IncomeTimeID { get; set; }
+        public IncomeTime IncomeTime { get; set; }
+
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "日期")]

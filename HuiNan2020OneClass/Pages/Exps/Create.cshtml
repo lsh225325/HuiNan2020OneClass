@@ -14,6 +14,10 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="Exp.classAndTermID" class="control-label"></label>
+                <select asp-for="Exp.classAndTermID" class="form-control" asp-items="ViewBag.classAndTermID"></select>
+            </div>
+            <div class="form-group">
                 <label asp-for="Exp.ReData" class="control-label"></label>
                 <input asp-for="Exp.ReData" class="form-control" />
                 <span asp-validation-for="Exp.ReData" class="text-danger"></span>
@@ -30,14 +34,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="Exp.CategoryID" class="control-label"></label>
-                <select asp-for="Exp.CategoryID" class ="form-control" asp-items="ViewBag.CategoryID"></select>
+                <select asp-for="Exp.CategoryID" class="form-control" asp-items="ViewBag.CategoryID"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Exp.JBR" class="control-label"></label>
                 <input asp-for="Exp.JBR" class="form-control" />
                 <span asp-validation-for="Exp.JBR" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

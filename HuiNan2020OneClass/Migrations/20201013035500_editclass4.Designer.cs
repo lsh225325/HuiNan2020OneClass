@@ -3,14 +3,16 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HuiNan2020OneClass.Migrations
 {
     [DbContext(typeof(AppContext))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [Migration("20201013035500_editclass4")]
+    partial class editclass4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,14 +116,9 @@ namespace HuiNan2020OneClass.Migrations
                     b.Property<DateTime>("UpdateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("classAndTermID")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
 
                     b.HasIndex("CategoryID");
-
-                    b.HasIndex("classAndTermID");
 
                     b.ToTable("Exp");
                 });
@@ -397,12 +394,6 @@ namespace HuiNan2020OneClass.Migrations
                     b.HasOne("HuiNan2020OneClass.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HuiNan2020OneClass.Models.Class.ClassAndTerm", "classAndTerm")
-                        .WithMany()
-                        .HasForeignKey("classAndTermID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

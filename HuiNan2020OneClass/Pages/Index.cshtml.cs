@@ -27,6 +27,7 @@ namespace HuiNan2020OneClass.Pages
         
         public void OnGet()
         {
+            /*
             var iscc = _context.GradeClass.FirstOrDefault(m => m.IsCurrentClass == true);
             if(iscc!=null)
             {
@@ -36,7 +37,7 @@ namespace HuiNan2020OneClass.Pages
             {
                 DefualtClass = "一年级1班";
             }
-            
+            */
 
 
 

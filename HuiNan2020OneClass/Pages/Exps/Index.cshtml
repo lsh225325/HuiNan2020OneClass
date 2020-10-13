@@ -13,6 +13,7 @@
 <table class="table">
     <thead>
         <tr>
+
             <th>
                 支出日期
             </th>
@@ -27,7 +28,10 @@
             </th>
             <th>
                 经办人
-            </th>           
+            </th>
+            <th>
+                学期
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Exp[0].IsDelete)
             </th>
@@ -37,8 +41,10 @@
     <tbody>
 @foreach (var item in Model.Exp) {
         <tr>
+
+
             <td>
-                <a asp-page="./Details" asp-route-id="@item.ID">                  
+                <a asp-page="./Details" asp-route-id="@item.ID">
                     @Html.DisplayFor(modelItem => item.ReData)
                 </a>
             </td>
@@ -48,7 +54,7 @@
             <td>
                 <a asp-page="./Details" asp-route-id="@item.ID">
                     @Html.DisplayFor(modelItem => item.Money)
-                    </a>
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
@@ -56,12 +62,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.JBR)
             </td>
-            
+            <td>
+                @Html.DisplayFor(modelItem => item.classAndTerm.Name)
+            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.IsDelete)
             </td>
             <td>
-                <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger" >Delete</a>
+                <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }

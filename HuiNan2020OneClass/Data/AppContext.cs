@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using HuiNan2020OneClass;
 using Microsoft.EntityFrameworkCore;
-using HuiNan2020OneClass;
+using System;
 using System.Threading;
-using HuiNan2020OneClass.Models;
+using System.Threading.Tasks;
 
 public class AppContext : DbContext
     {
@@ -18,7 +15,7 @@ public class AppContext : DbContext
 
         public DbSet<HuiNan2020OneClass.ClassNuber> ClassNuber { get; set; }
 
-        public DbSet<HuiNan2020OneClass.GradeClass> GradeClass { get; set; }
+       
 
 
     //重写保存
@@ -71,7 +68,10 @@ public class AppContext : DbContext
 
         public DbSet<HuiNan2020OneClass.SchoolTerm> SchoolTerm { get; set; }
 
-        public DbSet<HuiNan2020OneClass.Models.Semester> Semester { get; set; }
+        public DbSet<Semester> Semester { get; set; }
+
+        public DbSet<ClassAndTerm> ClassAndTerm { get; set; }
+        
 
 
 

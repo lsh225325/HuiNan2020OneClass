@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201013033922_editclass.cs" />
+    <Compile Remove="Migrations\20201013033922_editclass.Designer.cs" />
+    <Compile Remove="Migrations\20201013054007_exp-add-classandterm.cs" />
+    <Compile Remove="Migrations\20201013054007_exp-add-classandterm.Designer.cs" />
+    <Compile Remove="Migrations\20201013054127_exp-add-classandterm.cs" />
+    <Compile Remove="Migrations\20201013054127_exp-add-classandterm.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
@@ -17,6 +26,8 @@
 
   <ItemGroup>
     <Folder Include="Models\新文件夹\" />
+    <Folder Include="Pages\Students\" />
+    <Folder Include="Pages\IncomeTimes\" />
   </ItemGroup>
 
 </Project>

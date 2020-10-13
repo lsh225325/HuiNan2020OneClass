@@ -25,25 +25,28 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Exps/Index">支出</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Incomes/Index">收入</a>
-                        </li>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Incomes/Index">收入</a>                            
+                        </li>                      
+                        
+                        
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Sexs/Index">性别</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Schools/Classes/Index">班级</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Grades/Index">年级</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/ClassNubers/Index">班号</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Classes/Index">班级</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Categories/Index">收支类别</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Students/Index">学生</a>
+                        
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown link
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" asp-area="" asp-page="/Sexs/Index">性别</a>
+                                <a class="dropdown-item" asp-area="" asp-page="/Students/Index">学生</a>
+                                <a class="dropdown-item" asp-area="" asp-page="/Categories/Index">收支类别</a>
+                                <a class="dropdown-item" asp-area="" asp-page="/Schools/Grades/Index">年级</a>
+                                <a class="dropdown-item" asp-area="" asp-page="/Schools/ClassNubers/Index">班号</a>
+                                <a class="dropdown-item" asp-area="" asp-page="/Schools/Semesters/Index">学期</a>
+                                <a class="dropdown-item" asp-area="" asp-page="/Schools/SchoolTerms/Index">学年</a>
+                            </div>
                         </li>
                     </ul>
                 </div>

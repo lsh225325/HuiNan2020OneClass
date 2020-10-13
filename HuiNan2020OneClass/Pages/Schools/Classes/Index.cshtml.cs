@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace HuiNan2020OneClass.Pages.Schools.Semesters
+namespace HuiNan2020OneClass.Pages.Classes
 {
     public class IndexModel : PageModel
     {
@@ -14,11 +14,14 @@ namespace HuiNan2020OneClass.Pages.Schools.Semesters
             _context = context;
         }
 
-        public IList<Semester> Semester { get;set; }
+        public IList<ClassAndTerm> ClassAndTerm { get;set; }
 
         public async Task OnGetAsync()
         {
-            Semester = await _context.Semester.ToListAsync();
+            ClassAndTerm = await _context.ClassAndTerm
+                .Include(c => c.ClassNuber)
+                .Include(c => c.Grade)
+                .Include(c => c.SchoolTerm).ToListAsync();
         }
     }
 }

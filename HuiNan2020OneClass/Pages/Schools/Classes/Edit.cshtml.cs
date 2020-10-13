@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using HuiNan2020OneClass;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace HuiNan2020OneClass.Pages.Exps
+namespace HuiNan2020OneClass.Pages.Classes
 {
     public class EditModel : PageModel
     {
@@ -21,7 +17,7 @@ namespace HuiNan2020OneClass.Pages.Exps
         }
 
         [BindProperty]
-        public Exp Exp { get; set; }
+        public ClassAndTerm ClassAndTerm { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,15 +26,18 @@ namespace HuiNan2020OneClass.Pages.Exps
                 return NotFound();
             }
 
-            Exp = await _context.Exp
-                .Include(e => e.Category).FirstOrDefaultAsync(m => m.ID == id&&m.IsDelete==false);
+            ClassAndTerm = await _context.ClassAndTerm
+                .Include(c => c.ClassNuber)
+                .Include(c => c.Grade)
+                .Include(c => c.SchoolTerm).FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Exp == null)
+            if (ClassAndTerm == null)
             {
                 return NotFound();
             }
-           ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "CategoryName");
-            ViewData["classAndTermID"] = new SelectList(_context.ClassAndTerm, "ID", "Name");
+           ViewData["ClassNuberID"] = new SelectList(_context.ClassNuber, "ID", "ClassNuberName");
+           ViewData["GradeID"] = new SelectList(_context.Grade, "ID", "GradeName");
+           ViewData["SchoolTermID"] = new SelectList(_context.SchoolTerm, "ID", "Name");
             return Page();
         }
 
@@ -50,8 +49,11 @@ namespace HuiNan2020OneClass.Pages.Exps
             {
                 return Page();
             }
-
-            _context.Attach(Exp).State = EntityState.Modified;
+            var sgrade = _context.Grade.Find(ClassAndTerm.GradeID);
+            var sclaNo = _context.ClassNuber.Find(ClassAndTerm.ClassNuberID);
+            var sterm = _context.SchoolTerm.Find(ClassAndTerm.SchoolTermID);
+            ClassAndTerm.Name = sgrade.GradeName + sclaNo.ClassNuberName + "-" + sterm.Name;
+            _context.Attach(ClassAndTerm).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +61,7 @@ namespace HuiNan2020OneClass.Pages.Exps
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ExpExists(Exp.ID))
+                if (!ClassAndTermExists(ClassAndTerm.ID))
                 {
                     return NotFound();
                 }
@@ -72,9 +74,9 @@ namespace HuiNan2020OneClass.Pages.Exps
             return RedirectToPage("./Index");
         }
 
-        private bool ExpExists(int id)
+        private bool ClassAndTermExists(int id)
         {
-            return _context.Exp.Any(e => e.ID == id);
+            return _context.ClassAndTerm.Any(e => e.ID == id);
         }
     }
 }
