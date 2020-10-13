@@ -66,9 +66,14 @@ namespace HuiNan2020OneClass.Pages.Schools.SchoolTerms
                 for (int x=0;x<= senester.Count()-1;x++)
                 {
                     
-
+ 
                     var schoolterm = new SchoolTerm();
                     schoolterm.Name = i + senester[x].SemesterName;
+                    if(_context.SchoolTerm.FirstOrDefault(m=>m.Name==schoolterm.Name)!=null)
+                    {
+                        continue;
+                    }
+
                     schoolterm.SchoolYear = i;
                     schoolterm.SemesterID = senester[x].ID;
 

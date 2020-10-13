@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HuiNan2020OneClass;
+using System.Security.Cryptography.X509Certificates;
 
 namespace HuiNan2020OneClass.Pages.Schools.SchoolTerms
 {
@@ -22,6 +23,8 @@ namespace HuiNan2020OneClass.Pages.Schools.SchoolTerms
         [BindProperty]
         public SchoolTerm SchoolTerm { get; set; }
 
+        public string ErrMsg { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -36,8 +39,8 @@ namespace HuiNan2020OneClass.Pages.Schools.SchoolTerms
             {
                 return NotFound();
             }
-           ViewData["SemesterID"] = new SelectList(_context.Semester, "ID", "ID");
-            return Page();
+                ViewData["SemesterID"] = new SelectList(_context.Semester, "ID", "SemesterName");
+                return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -48,7 +51,19 @@ namespace HuiNan2020OneClass.Pages.Schools.SchoolTerms
             {
                 return Page();
             }
+            var sem = _context.Semester.FirstOrDefault(x => x.ID == SchoolTerm.Semester.ID);
+            SchoolTerm.Name = SchoolTerm.SchoolYear.ToString() + sem.SemesterName;
 
+            if (_context.SchoolTerm.FirstOrDefault(x=>x.Name== SchoolTerm.Name)!=null)
+            {
+                ErrMsg = "年级+学期组合已存在";
+                ViewData["SemesterID"] = new SelectList(_context.Semester, "ID", "SemesterName");
+
+                return Page();
+            }
+
+            SchoolTerm.Semester = null;
+            SchoolTerm.SemesterID = sem.ID;
             _context.Attach(SchoolTerm).State = EntityState.Modified;
 
             try

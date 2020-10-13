@@ -14,36 +14,20 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="SchoolTerm.SchoolYear" class="control-label"></label>
+                <label class="control-label">学年</label>
                 <input asp-for="SchoolTerm.SchoolYear" class="form-control" />
                 <span asp-validation-for="SchoolTerm.SchoolYear" class="text-danger"></span>
+                <a class="text-danger">@Model.ErrMsg</a>
             </div>
             <div class="form-group">
-                <label asp-for="SchoolTerm.SemesterID" class="control-label"></label>
-                <select asp-for="SchoolTerm.SemesterID" class="form-control" asp-items="ViewBag.SemesterID"></select>
-                <span asp-validation-for="SchoolTerm.SemesterID" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="SchoolTerm.ID" />
-            <div class="form-group">
-                <label asp-for="SchoolTerm.CreatTime" class="control-label"></label>
-                <input asp-for="SchoolTerm.CreatTime" class="form-control" />
-                <span asp-validation-for="SchoolTerm.CreatTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SchoolTerm.UpdateTime" class="control-label"></label>
-                <input asp-for="SchoolTerm.UpdateTime" class="form-control" />
-                <span asp-validation-for="SchoolTerm.UpdateTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SchoolTerm.CreatUserName" class="control-label"></label>
-                <input asp-for="SchoolTerm.CreatUserName" class="form-control" />
-                <span asp-validation-for="SchoolTerm.CreatUserName" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="SchoolTerm.IsDelete" /> @Html.DisplayNameFor(model => model.SchoolTerm.IsDelete)
-                </label>
-            </div>
+                <label class="control-label">学期</label>
+                <select asp-for="SchoolTerm.Semester.ID" class="form-control" asp-items="ViewBag.SemesterID"></select>
+                <span asp-validation-for="SchoolTerm.Semester.ID" class="text-danger"></span>
+            </div>           
+            
+            <input type="hidden" asp-for="SchoolTerm.ID" />          
+
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

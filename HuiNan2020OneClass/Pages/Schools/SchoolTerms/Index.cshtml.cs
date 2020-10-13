@@ -22,7 +22,7 @@ namespace HuiNan2020OneClass.Pages.Schools.SchoolTerms
 
         public async Task OnGetAsync()
         {
-            SchoolTerm = await _context.SchoolTerm
+            SchoolTerm = await _context.SchoolTerm.OrderBy(m=>m.Name)
                 .Include(s => s.Semester).ToListAsync();
         }
     }
