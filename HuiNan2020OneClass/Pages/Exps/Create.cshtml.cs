@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using HuiNan2020OneClass;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace HuiNan2020OneClass.Pages.Exps
 {
@@ -20,7 +17,7 @@ namespace HuiNan2020OneClass.Pages.Exps
 
         public IActionResult OnGet()
         {
-            ViewData["CategoryID"] = new SelectList(_context.Category.Where(m=>m.IncomOrExp==0), "ID", "CategoryName");
+            ViewData["CategoryID"] = new SelectList(_context.Category.Where(m => m.IncomOrExp == 0), "ID", "CategoryName");
             ViewData["classAndTermID"] = new SelectList(_context.ClassAndTerm, "ID", "Name");
             return Page();
         }

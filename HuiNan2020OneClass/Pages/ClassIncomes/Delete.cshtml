@@ -1,0 +1,88 @@
+﻿@page
+@model HuiNan2020OneClass.Pages.ClassIncomes.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ClassIncome</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassIncome.classAndTerm)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassIncome.classAndTerm.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassIncome.ReData)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassIncome.ReData)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassIncome.Rdmark)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassIncome.Rdmark)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassIncome.EveryoneMoney)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassIncome.EveryoneMoney)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassIncome.Count)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassIncome.Count)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassIncome.Money)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassIncome.Money)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassIncome.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassIncome.Category.CategoryName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassIncome.CreatTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassIncome.CreatTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassIncome.UpdateTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassIncome.UpdateTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassIncome.CreatUserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassIncome.CreatUserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassIncome.IsDelete)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassIncome.IsDelete)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="ClassIncome.ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

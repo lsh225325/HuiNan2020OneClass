@@ -1,0 +1,63 @@
+﻿@page
+@model HuiNan2020OneClass.Pages.ClassIncomes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>班费收入清单</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">新增班费收入</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                收取日期
+            </th>
+            <th>
+                总金额
+            </th>
+            <th>
+                学期
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ClassIncome[0].Rdmark)
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ClassIncome) {
+        <tr>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">
+                    @Html.DisplayFor(modelItem => item.ReData)
+                </a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">
+                    @Html.DisplayFor(modelItem => item.Money)
+                </a>
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.classAndTerm.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Rdmark)
+            </td>
+
+
+            <td>
+                <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

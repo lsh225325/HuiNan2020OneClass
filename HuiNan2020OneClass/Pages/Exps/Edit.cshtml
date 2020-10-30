@@ -5,16 +5,16 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>修改支出</h1>
 
-<h4>Exp</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Exp.classAndTermID" class="control-label"></label>
+                <label asp-for="Exp.classAndTermID" class="control-label">班级</label>
                 <select asp-for="Exp.classAndTermID" class="form-control" asp-items="ViewBag.classAndTermID"></select>
             </div>
             <div class="form-group">
@@ -50,7 +50,7 @@
 
 
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="保存" class="btn btn-primary form-control" />
             </div>
         </form>
     </div>

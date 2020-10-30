@@ -5,10 +5,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>支出清单</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create" class="btn btn-primary">记一笔</a>
 </p>
 <table class="table">
     <thead>
@@ -32,9 +32,7 @@
             <th>
                 学期
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Exp[0].IsDelete)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -66,9 +64,7 @@
                 @Html.DisplayFor(modelItem => item.classAndTerm.Name)
             </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.IsDelete)
-            </td>
+            
             <td>
                 <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
             </td>

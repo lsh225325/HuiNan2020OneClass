@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
-namespace HuiNan2020OneClass.Pages.Classes
+namespace HuiNan2020OneClass.Pages.ClassIncomes
 {
     public class DeleteModel : PageModel
     {
@@ -15,7 +15,7 @@ namespace HuiNan2020OneClass.Pages.Classes
         }
 
         [BindProperty]
-        public ClassAndTerm ClassAndTerm { get; set; }
+        public ClassIncome ClassIncome { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -24,12 +24,11 @@ namespace HuiNan2020OneClass.Pages.Classes
                 return NotFound();
             }
 
-            ClassAndTerm = await _context.ClassAndTerm
-                .Include(c => c.ClassNuber)
-                .Include(c => c.Grade)
-                .Include(c => c.SchoolTerm).FirstOrDefaultAsync(m => m.ID == id);
+            ClassIncome = await _context.ClassIncome
+                .Include(c => c.Category)
+                .Include(c => c.classAndTerm).FirstOrDefaultAsync(m => m.ID == id);
 
-            if (ClassAndTerm == null)
+            if (ClassIncome == null)
             {
                 return NotFound();
             }
@@ -43,11 +42,11 @@ namespace HuiNan2020OneClass.Pages.Classes
                 return NotFound();
             }
 
-            ClassAndTerm = await _context.ClassAndTerm.FindAsync(id);
+            ClassIncome = await _context.ClassIncome.FindAsync(id);
 
-            if (ClassAndTerm != null)
+            if (ClassIncome != null)
             {
-                _context.ClassAndTerm.Remove(ClassAndTerm);
+                _context.ClassIncome.Remove(ClassIncome);
                 await _context.SaveChangesAsync();
             }
 

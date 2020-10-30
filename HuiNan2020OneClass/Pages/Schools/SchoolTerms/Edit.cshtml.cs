@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using HuiNan2020OneClass;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace HuiNan2020OneClass.Pages.Schools.SchoolTerms
 {
@@ -39,8 +35,8 @@ namespace HuiNan2020OneClass.Pages.Schools.SchoolTerms
             {
                 return NotFound();
             }
-                ViewData["SemesterID"] = new SelectList(_context.Semester, "ID", "SemesterName");
-                return Page();
+            ViewData["SemesterID"] = new SelectList(_context.Semester, "ID", "SemesterName");
+            return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -54,7 +50,7 @@ namespace HuiNan2020OneClass.Pages.Schools.SchoolTerms
             var sem = _context.Semester.FirstOrDefault(x => x.ID == SchoolTerm.Semester.ID);
             SchoolTerm.Name = SchoolTerm.SchoolYear.ToString() + sem.SemesterName;
 
-            if (_context.SchoolTerm.FirstOrDefault(x=>x.Name== SchoolTerm.Name)!=null)
+            if (_context.SchoolTerm.FirstOrDefault(x => x.Name == SchoolTerm.Name) != null)
             {
                 ErrMsg = "年级+学期组合已存在";
                 ViewData["SemesterID"] = new SelectList(_context.Semester, "ID", "SemesterName");

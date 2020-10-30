@@ -14,7 +14,7 @@ namespace HuiNan2020OneClass.Pages.Classes
             _context = context;
         }
 
-        public IList<ClassAndTerm> ClassAndTerm { get;set; }
+        public IList<ClassAndTerm> ClassAndTerm { get; set; }
 
         public async Task OnGetAsync()
         {

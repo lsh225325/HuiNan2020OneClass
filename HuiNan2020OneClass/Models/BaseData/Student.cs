@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HuiNan2020OneClass
 {
-    public class Student:Base
+    public class Student : Base
     {
         /// <summary>
         /// 学生姓名
@@ -15,8 +13,8 @@ namespace HuiNan2020OneClass
         [Display(Name = "姓名")]
 
         public string Name { get; set; }
-        
-        
+
+
         [Required]
         [Display(Name = "性别")]
         public Sex Sex { get; set; }
@@ -27,12 +25,9 @@ namespace HuiNan2020OneClass
         public DateTime EnrollmentTime { get; set; }
 
 
-        [Display(Name = "班级")]
-        public int GradeClassID { get; set; }
 
 
-        //[Display(Name = "班级")]
-        //public GradeClass GradeClass { get; set; }
+
 
         [Required]
         [Display(Name = "生日")]
@@ -59,6 +54,9 @@ namespace HuiNan2020OneClass
 
         [Display(Name = "身份证")]
         public string Ident { get; set; }
+
+
+        public ICollection<ClassAndStudent> ClassAndStudents { get; set; }
 
     }
 }

@@ -5,63 +5,39 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>新增班级</h1>
 
-<h4>ClassAndTerm</h4>
 <hr />
+<p>
+    <a class="text-danger">@Model.ErrMsg</a>
+</p>
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ClassAndTerm.ClassNuberID" class="control-label"></label>
+                <label asp-for="ClassAndTerm.ClassNuberID" class="control-label">班</label>
                 <select asp-for="ClassAndTerm.ClassNuberID" class ="form-control" asp-items="ViewBag.ClassNuberID"></select>
             </div>
             <div class="form-group">
-                <label asp-for="ClassAndTerm.GradeID" class="control-label"></label>
+                <label asp-for="ClassAndTerm.GradeID" class="control-label">年级</label>
                 <select asp-for="ClassAndTerm.GradeID" class ="form-control" asp-items="ViewBag.GradeID"></select>
             </div>
             <div class="form-group">
-                <label asp-for="ClassAndTerm.SchoolTermID" class="control-label"></label>
+                <label asp-for="ClassAndTerm.SchoolTermID" class="control-label">学期</label>
                 <select asp-for="ClassAndTerm.SchoolTermID" class ="form-control" asp-items="ViewBag.SchoolTermID"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="ClassAndTerm.TermNuber" class="control-label"></label>
-                <input asp-for="ClassAndTerm.TermNuber" class="form-control" />
-                <span asp-validation-for="ClassAndTerm.TermNuber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClassAndTerm.Name" class="control-label"></label>
-                <input asp-for="ClassAndTerm.Name" class="form-control" />
-                <span asp-validation-for="ClassAndTerm.Name" class="text-danger"></span>
-            </div>
+           
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="ClassAndTerm.IsCurrentClass" /> @Html.DisplayNameFor(model => model.ClassAndTerm.IsCurrentClass)
+                    <input class="form-check-input" asp-for="ClassAndTerm.IsCurrentClass" /> 设为本学期？
                 </label>
             </div>
+            
+           
+            
             <div class="form-group">
-                <label asp-for="ClassAndTerm.CreatTime" class="control-label"></label>
-                <input asp-for="ClassAndTerm.CreatTime" class="form-control" />
-                <span asp-validation-for="ClassAndTerm.CreatTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClassAndTerm.UpdateTime" class="control-label"></label>
-                <input asp-for="ClassAndTerm.UpdateTime" class="form-control" />
-                <span asp-validation-for="ClassAndTerm.UpdateTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClassAndTerm.CreatUserName" class="control-label"></label>
-                <input asp-for="ClassAndTerm.CreatUserName" class="form-control" />
-                <span asp-validation-for="ClassAndTerm.CreatUserName" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="ClassAndTerm.IsDelete" /> @Html.DisplayNameFor(model => model.ClassAndTerm.IsDelete)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="保存" class="btn btn-primary form-control" />
             </div>
         </form>
     </div>

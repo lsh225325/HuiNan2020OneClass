@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HuiNan2020OneClass
 {
     public class Base
-    { 
+    {
         /// <summary>
         /// ID
         /// </summary>
@@ -16,13 +13,13 @@ namespace HuiNan2020OneClass
         /// <summary>
         /// 创建时间
         /// </summary>
-        [Display(Name ="建立时间")]
+        [Display(Name = "建立时间")]
         public DateTime CreatTime { get; set; }
 
         /// <summary>
         /// 修改时间
         /// </summary>
-        [Display(Name ="修改时间")]
+        [Display(Name = "修改时间")]
         public DateTime UpdateTime { get; set; } = DateTime.Now;
 
         /// <summary>

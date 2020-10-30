@@ -1,12 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace HuiNan2020OneClass
+﻿namespace HuiNan2020OneClass
 {
-    public class Sex:Base
+    public class Sex : Base
     {
         public string SexType { get; set; }
     }

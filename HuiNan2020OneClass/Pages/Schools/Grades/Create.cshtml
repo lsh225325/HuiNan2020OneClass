@@ -18,21 +18,7 @@
                 <input asp-for="Grade.GradeName" class="form-control" />
                 <span asp-validation-for="Grade.GradeName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Grade.CreatTime" class="control-label"></label>
-                <input asp-for="Grade.CreatTime" class="form-control" />
-                <span asp-validation-for="Grade.CreatTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Grade.UpdateTime" class="control-label"></label>
-                <input asp-for="Grade.UpdateTime" class="form-control" />
-                <span asp-validation-for="Grade.UpdateTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Grade.CreatUserName" class="control-label"></label>
-                <input asp-for="Grade.CreatUserName" class="form-control" />
-                <span asp-validation-for="Grade.CreatUserName" class="text-danger"></span>
-            </div>
+            
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Grade.IsDelete" /> @Html.DisplayNameFor(model => model.Grade.IsDelete)

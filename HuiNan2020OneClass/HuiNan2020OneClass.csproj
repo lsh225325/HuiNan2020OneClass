@@ -2,18 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>94a551af-67d5-4a53-8dd5-1b1f00d98aab</UserSecretsId>
+    <AssemblyName>HNAPP</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20201013033922_editclass.cs" />
-    <Compile Remove="Migrations\20201013033922_editclass.Designer.cs" />
-    <Compile Remove="Migrations\20201013054007_exp-add-classandterm.cs" />
-    <Compile Remove="Migrations\20201013054007_exp-add-classandterm.Designer.cs" />
-    <Compile Remove="Migrations\20201013054127_exp-add-classandterm.cs" />
-    <Compile Remove="Migrations\20201013054127_exp-add-classandterm.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
@@ -26,8 +20,11 @@
 
   <ItemGroup>
     <Folder Include="Models\新文件夹\" />
-    <Folder Include="Pages\Students\" />
-    <Folder Include="Pages\IncomeTimes\" />
+    <Folder Include="Pages\Schools\Students\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\echarts.min.js" />
   </ItemGroup>
 
 </Project>

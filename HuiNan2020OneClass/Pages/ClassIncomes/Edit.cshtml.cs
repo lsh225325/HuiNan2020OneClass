@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using HuiNan2020OneClass;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace HuiNan2020OneClass.Pages.Incomes
+namespace HuiNan2020OneClass.Pages.ClassIncomes
 {
     public class EditModel : PageModel
     {
@@ -20,7 +17,7 @@ namespace HuiNan2020OneClass.Pages.Incomes
         }
 
         [BindProperty]
-        public Income Income { get; set; }
+        public ClassIncome ClassIncome { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,14 +26,16 @@ namespace HuiNan2020OneClass.Pages.Incomes
                 return NotFound();
             }
 
-            Income = await _context.Income
-                .Include(i => i.Category).FirstOrDefaultAsync(m => m.ID == id);
+            ClassIncome = await _context.ClassIncome
+                .Include(c => c.Category)
+                .Include(c => c.classAndTerm).FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Income == null)
+            if (ClassIncome == null)
             {
                 return NotFound();
             }
-           ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "CategoryName");
+            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "CategoryName");
+            ViewData["ClassAndTermID"] = new SelectList(_context.ClassAndTerm, "ID", "ID");
             return Page();
         }
 
@@ -49,7 +48,7 @@ namespace HuiNan2020OneClass.Pages.Incomes
                 return Page();
             }
 
-            _context.Attach(Income).State = EntityState.Modified;
+            _context.Attach(ClassIncome).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +56,7 @@ namespace HuiNan2020OneClass.Pages.Incomes
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!IncomeExists(Income.ID))
+                if (!ClassIncomeExists(ClassIncome.ID))
                 {
                     return NotFound();
                 }
@@ -70,9 +69,9 @@ namespace HuiNan2020OneClass.Pages.Incomes
             return RedirectToPage("./Index");
         }
 
-        private bool IncomeExists(int id)
+        private bool ClassIncomeExists(int id)
         {
-            return _context.Income.Any(e => e.ID == id);
+            return _context.ClassIncome.Any(e => e.ID == id);
         }
     }
 }

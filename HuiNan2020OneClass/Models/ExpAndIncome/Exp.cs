@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HuiNan2020OneClass
 {
-    public class Exp:Base
+    public class Exp : Base
     {
-        
+
         public int classAndTermID { get; set; }
         public ClassAndTerm classAndTerm { get; set; }
 
@@ -22,7 +22,7 @@ namespace HuiNan2020OneClass
         [Display(Name = "金额")]
         public decimal Money { get; set; }
 
-        
+
 
         [Required]
         [Display(Name = "类别")]

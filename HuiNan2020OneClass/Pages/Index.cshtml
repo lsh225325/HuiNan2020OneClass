@@ -1,12 +1,76 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home page";    
 }
 
 <div class="text-center">
-    <h4 >南湖实际学校</h4>
-    <h2 >班费记录系统</h2>
-    <h4 >@Model.DefualtClass</h4>
-    
+    <h4 class="text-xl-center">南湖实际学校</h4>
+    <h2>班费记录系统</h2>
+    <h4>@Model.DefualtClass</h4>
+
 </div>
+
+<span></span>
+<p>
+
+</p>
+
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body text-center bg-info text-light">
+                        <p></p>
+
+                        <h1 class="card-title pricing-card-title">@Model.TotalIncom.ToString("N0")</h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>@Model.TotalCountIncome <small>笔</small></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">总收入<a asp-page="/Report/IncomeReport" class="btn btn-sm btn-outline-secondary">...</a></p>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body text-center bg-info text-light">
+                        <p></p>
+
+                        <h1 class="card-title pricing-card-title">@Model.TotalEpx.ToString("N0")</h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>@Model.TotalCount <small>笔</small></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">总支出<a asp-page="/Report/ExpReport" class="btn btn-sm btn-outline-secondary">...</a>     </p>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body text-center bg-info text-light" height="250">
+                        <p></p>
+
+                        <h1 class="card-title pricing-card-title">@Model.NetMoney.ToString("N0")</h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>!</li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">余额</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using HuiNan2020OneClass;
+using System.Threading.Tasks;
 
 namespace HuiNan2020OneClass.Pages.Categories
 {
@@ -48,7 +44,7 @@ namespace HuiNan2020OneClass.Pages.Categories
 
             Category = await _context.Category.FindAsync(id);
 
-            if (Category.IsDelete !=true)
+            if (Category.IsDelete != true)
             {
                 ErrMsg = "没有删除，不能启用";
                 return Page();
@@ -58,7 +54,7 @@ namespace HuiNan2020OneClass.Pages.Categories
             if (Category != null)
             {
                 Category.IsDelete = false;
-                _context.Attach(Category).State = EntityState.Modified;                
+                _context.Attach(Category).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
 

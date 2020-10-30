@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using HuiNan2020OneClass;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace HuiNan2020OneClass.Pages.Exps
 {
@@ -31,13 +27,13 @@ namespace HuiNan2020OneClass.Pages.Exps
             }
 
             Exp = await _context.Exp
-                .Include(e => e.Category).FirstOrDefaultAsync(m => m.ID == id&&m.IsDelete==false);
+                .Include(e => e.Category).FirstOrDefaultAsync(m => m.ID == id && m.IsDelete == false);
 
             if (Exp == null)
             {
                 return NotFound();
             }
-           ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "CategoryName");
+            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "CategoryName");
             ViewData["classAndTermID"] = new SelectList(_context.ClassAndTerm, "ID", "Name");
             return Page();
         }

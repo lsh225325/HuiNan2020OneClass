@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using HuiNan2020OneClass;
+using System.Threading.Tasks;
 
 namespace HuiNan2020OneClass.Pages.Exps
 {
@@ -51,7 +47,7 @@ namespace HuiNan2020OneClass.Pages.Exps
             if (Exp != null)
             {
                 Exp.IsDelete = true;
-                _context.Attach(Exp).State = EntityState.Modified;                
+                _context.Attach(Exp).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
 

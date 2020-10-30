@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using HuiNan2020OneClass;
+using System.Threading.Tasks;
 
 namespace HuiNan2020OneClass.Pages.Categories
 {
@@ -45,7 +41,7 @@ namespace HuiNan2020OneClass.Pages.Categories
             {
                 return NotFound();
             }
-            
+
 
             Category = await _context.Category.FindAsync(id);
 

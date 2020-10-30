@@ -21,7 +21,7 @@
             </th>
             
             <th>
-                @Html.DisplayNameFor(model => model.Category[0].IsDelete)
+                系统预设
             </th>
             <th></th>
         </tr>
@@ -40,7 +40,7 @@
             </td>
            
             <td>
-                @Html.DisplayFor(modelItem => item.IsDelete)
+                @Html.DisplayFor(modelItem => item.IsSystem )
             </td>
             <td>
                 <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger" >Delete</a>

@@ -1,0 +1,94 @@
+﻿@page
+@model HuiNan2020OneClass.Pages.Report.ExpreportModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>支出清单</h1>       
+<hr />
+    
+    
+
+    <form >
+        <div>
+            <p>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">过滤</button>
+            </p>
+        </div>
+      
+            日期：起 <input asp-for="FirstTime">
+            止<input asp-for="LastTime">
+         
+            <select asp-for="GetCategory" asp-items="Model.GetCategorys">
+                <option value="">--类别--</option>
+            </select>
+            <select asp-for="GetClass" asp-items="Model.GetClasses">
+                <option value="">--班级--</option>
+            </select>
+            <input asp-for="SearchString" placeholder="查找说明" aria-label="Search">
+            
+        
+
+    </form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                支出日期
+            </th>
+            <th>
+                说明
+            </th>
+            <th>
+                金额
+            </th>
+            <th>
+                类别
+            </th>
+            <th>
+                经办人
+            </th>
+            <th>
+                学期
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Exp) {
+        <tr>
+
+
+            <td>
+                
+                    @Html.DisplayFor(modelItem => item.ReData)
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rdmark)
+            </td>
+            <td>
+                
+                    @Html.DisplayFor(modelItem => item.Money)
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JBR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.classAndTerm.Name)
+            </td>
+
+            
+            
+        </tr>
+}
+    </tbody>
+</table>

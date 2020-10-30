@@ -35,7 +35,7 @@ namespace HuiNan2020OneClass.Pages.Schools.Semesters
                 return NotFound();
             }
 
-           
+
             return Page();
         }
 
@@ -57,9 +57,9 @@ namespace HuiNan2020OneClass.Pages.Schools.Semesters
 
             _context.Attach(Semester).State = EntityState.Modified;
 
-            
-            
-            
+
+
+
             try
             {
                 await _context.SaveChangesAsync();

@@ -32,7 +32,7 @@ namespace HuiNan2020OneClass.Pages.Schools.Semesters
                 return Page();
             }
 
-            if (_context.Semester.FirstOrDefault(m=>m.SemesterName== Semester.SemesterName)!=null)
+            if (_context.Semester.FirstOrDefault(m => m.SemesterName == Semester.SemesterName) != null)
             {
                 ErrMsg = "学期重复";
 

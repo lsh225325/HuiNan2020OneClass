@@ -35,9 +35,9 @@ namespace HuiNan2020OneClass.Pages.Classes
             {
                 return NotFound();
             }
-           ViewData["ClassNuberID"] = new SelectList(_context.ClassNuber, "ID", "ClassNuberName");
-           ViewData["GradeID"] = new SelectList(_context.Grade, "ID", "GradeName");
-           ViewData["SchoolTermID"] = new SelectList(_context.SchoolTerm, "ID", "Name");
+            ViewData["ClassNuberID"] = new SelectList(_context.ClassNuber, "ID", "ClassNuberName");
+            ViewData["GradeID"] = new SelectList(_context.Grade, "ID", "GradeName");
+            ViewData["SchoolTermID"] = new SelectList(_context.SchoolTerm, "ID", "Name");
             return Page();
         }
 
@@ -49,6 +49,23 @@ namespace HuiNan2020OneClass.Pages.Classes
             {
                 return Page();
             }
+
+            if (ClassAndTerm.IsCurrentClass == true)
+            {
+                var ctlists = _context.ClassAndTerm.Where(m => m.ID != ClassAndTerm.ID).ToList();
+                var ctlist = ctlists.Where(m => m.IsCurrentClass == true);
+                foreach (var m in ctlist)
+                {
+
+                    m.IsCurrentClass = false;
+                    _context.Attach(m).State = EntityState.Modified;
+
+
+                }
+                await _context.SaveChangesAsync();
+            }
+
+
             var sgrade = _context.Grade.Find(ClassAndTerm.GradeID);
             var sclaNo = _context.ClassNuber.Find(ClassAndTerm.ClassNuberID);
             var sterm = _context.SchoolTerm.Find(ClassAndTerm.SchoolTermID);

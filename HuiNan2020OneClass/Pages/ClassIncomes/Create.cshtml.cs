@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using HuiNan2020OneClass;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace HuiNan2020OneClass.Pages.Incomes
+namespace HuiNan2020OneClass.Pages.ClassIncomes
 {
     public class CreateModel : PageModel
     {
@@ -19,13 +16,14 @@ namespace HuiNan2020OneClass.Pages.Incomes
         }
 
         public IActionResult OnGet()
-        {            
-            ViewData["CategoryID"] = new SelectList(_context.Category.Where(m => m.IncomOrExp == IncomOrExpense.收入), "ID", "CategoryName");
+        {
+            ViewData["CategoryID"] = new SelectList(_context.Category.Where(m => m.CategoryName == "班费收入"), "ID", "CategoryName");
+            ViewData["ClassAndTermID"] = new SelectList(_context.ClassAndTerm, "ID", "Name");
             return Page();
         }
 
         [BindProperty]
-        public Income Income { get; set; }
+        public ClassIncome ClassIncome { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -36,7 +34,7 @@ namespace HuiNan2020OneClass.Pages.Incomes
                 return Page();
             }
 
-            _context.Income.Add(Income);
+            _context.ClassIncome.Add(ClassIncome);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

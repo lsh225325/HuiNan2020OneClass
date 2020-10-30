@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HuiNan2020OneClass.Migrations
@@ -14,65 +13,190 @@ namespace HuiNan2020OneClass.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.8")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "3.1.8");
 
             modelBuilder.Entity("HuiNan2020OneClass.Category", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CreatUserName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("IncomOrExp")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsSystem")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("ID");
 
                     b.ToTable("Category");
                 });
 
+            modelBuilder.Entity("HuiNan2020OneClass.ClassAndStudent", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("ClassAndTermID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CreatUserName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("StudentID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ClassAndTermID");
+
+                    b.HasIndex("StudentID");
+
+                    b.ToTable("ClassAndStudent");
+                });
+
+            modelBuilder.Entity("HuiNan2020OneClass.ClassAndTerm", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ClassNuberID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CreatUserName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("GradeID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsCurrentClass")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("SchoolTermID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TermNuber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ClassNuberID");
+
+                    b.HasIndex("GradeID");
+
+                    b.HasIndex("SchoolTermID");
+
+                    b.ToTable("ClassAndTerm");
+                });
+
+            modelBuilder.Entity("HuiNan2020OneClass.ClassIncome", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ClassAndTermID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CreatUserName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("EveryoneMoney")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Money")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Rdmark")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("ReData")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CategoryID");
+
+                    b.HasIndex("ClassAndTermID");
+
+                    b.ToTable("ClassIncome");
+                });
+
             modelBuilder.Entity("HuiNan2020OneClass.ClassNuber", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ClassNuberName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CreatUserName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("ID");
 
@@ -83,39 +207,38 @@ namespace HuiNan2020OneClass.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("CategoryID")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CreatUserName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("JBR")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("Money")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Rdmark")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ReData")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("classAndTermID")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 
@@ -130,173 +253,95 @@ namespace HuiNan2020OneClass.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CreatUserName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("GradeName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Level")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("ID");
 
                     b.ToTable("Grade");
                 });
 
-            modelBuilder.Entity("HuiNan2020OneClass.Income", b =>
+            modelBuilder.Entity("HuiNan2020OneClass.Models.ExpAndIncome.StudentAndIncome", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("ClassIncomeID")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
+                    b.Property<int>("StudentID")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("CreatTime")
-                        .HasColumnType("datetime2");
+                    b.HasKey("ClassIncomeID", "StudentID");
 
-                    b.Property<string>("CreatUserName")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasIndex("StudentID");
 
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<decimal>("Money")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Rdmark")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ReData")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CategoryID");
-
-                    b.ToTable("Income");
+                    b.ToTable("StudentAndIncome");
                 });
 
-            modelBuilder.Entity("HuiNan2020OneClass.Models.Class.ClassAndTerm", b =>
+            modelBuilder.Entity("HuiNan2020OneClass.OtherIncome", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ClassNuberID")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CreatUserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("GradeID")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsCurrentClass")
-                        .HasColumnType("bit");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SchoolTermID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TermNuber")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("ClassNuberID");
-
-                    b.HasIndex("GradeID");
-
-                    b.HasIndex("SchoolTermID");
-
-                    b.ToTable("ClassAndTerm");
-                });
-
-            modelBuilder.Entity("HuiNan2020OneClass.Models.Semester", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatUserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SemesterName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Semester");
+                    b.ToTable("OtherIncome");
                 });
 
             modelBuilder.Entity("HuiNan2020OneClass.SchoolTerm", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CreatUserName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("SchoolYear")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("SemesterID")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("ID");
 
@@ -305,27 +350,52 @@ namespace HuiNan2020OneClass.Migrations
                     b.ToTable("SchoolTerm");
                 });
 
+            modelBuilder.Entity("HuiNan2020OneClass.Semester", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CreatUserName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("SemesterName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Semester");
+                });
+
             modelBuilder.Entity("HuiNan2020OneClass.Sex", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CreatUserName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("SexType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("ID");
 
@@ -336,87 +406,75 @@ namespace HuiNan2020OneClass.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Borthday")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("ClassIncomeID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CreatUserName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("EnrollmentTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("GradeClassID")
-                        .HasColumnType("int");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Ident")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Pic")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("QQ")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("SexID")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Weixin")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("ClassIncomeID");
 
                     b.HasIndex("SexID");
 
                     b.ToTable("Student");
                 });
 
-            modelBuilder.Entity("HuiNan2020OneClass.Exp", b =>
+            modelBuilder.Entity("HuiNan2020OneClass.ClassAndStudent", b =>
                 {
-                    b.HasOne("HuiNan2020OneClass.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("HuiNan2020OneClass.ClassAndTerm", null)
+                        .WithMany("ClassAndStudents")
+                        .HasForeignKey("ClassAndTermID");
 
-                    b.HasOne("HuiNan2020OneClass.Models.Class.ClassAndTerm", "classAndTerm")
-                        .WithMany()
-                        .HasForeignKey("classAndTermID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("HuiNan2020OneClass.Student", null)
+                        .WithMany("ClassAndStudents")
+                        .HasForeignKey("StudentID");
                 });
 
-            modelBuilder.Entity("HuiNan2020OneClass.Income", b =>
-                {
-                    b.HasOne("HuiNan2020OneClass.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("HuiNan2020OneClass.Models.Class.ClassAndTerm", b =>
+            modelBuilder.Entity("HuiNan2020OneClass.ClassAndTerm", b =>
                 {
                     b.HasOne("HuiNan2020OneClass.ClassNuber", "ClassNuber")
                         .WithMany()
@@ -437,9 +495,54 @@ namespace HuiNan2020OneClass.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("HuiNan2020OneClass.ClassIncome", b =>
+                {
+                    b.HasOne("HuiNan2020OneClass.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HuiNan2020OneClass.ClassAndTerm", "classAndTerm")
+                        .WithMany()
+                        .HasForeignKey("ClassAndTermID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("HuiNan2020OneClass.Exp", b =>
+                {
+                    b.HasOne("HuiNan2020OneClass.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HuiNan2020OneClass.ClassAndTerm", "classAndTerm")
+                        .WithMany()
+                        .HasForeignKey("classAndTermID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("HuiNan2020OneClass.Models.ExpAndIncome.StudentAndIncome", b =>
+                {
+                    b.HasOne("HuiNan2020OneClass.ClassIncome", "ClassIncome")
+                        .WithMany()
+                        .HasForeignKey("ClassIncomeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HuiNan2020OneClass.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("HuiNan2020OneClass.SchoolTerm", b =>
                 {
-                    b.HasOne("HuiNan2020OneClass.Models.Semester", "Semester")
+                    b.HasOne("HuiNan2020OneClass.Semester", "Semester")
                         .WithMany()
                         .HasForeignKey("SemesterID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -448,6 +551,10 @@ namespace HuiNan2020OneClass.Migrations
 
             modelBuilder.Entity("HuiNan2020OneClass.Student", b =>
                 {
+                    b.HasOne("HuiNan2020OneClass.ClassIncome", null)
+                        .WithMany("students")
+                        .HasForeignKey("ClassIncomeID");
+
                     b.HasOne("HuiNan2020OneClass.Sex", "Sex")
                         .WithMany()
                         .HasForeignKey("SexID")

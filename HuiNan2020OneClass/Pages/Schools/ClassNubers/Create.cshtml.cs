@@ -20,8 +20,8 @@ namespace HuiNan2020OneClass.Pages.ClassNubers
         {
             return Page();
         }
-               
-        [Range(1,100)]
+
+        [Range(1, 100)]
         [BindProperty]
         public int MaxClass { get; set; }
 
@@ -29,7 +29,7 @@ namespace HuiNan2020OneClass.Pages.ClassNubers
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            for (int i= 1; i <= MaxClass;i++)
+            for (int i = 1; i <= MaxClass; i++)
             {
 
                 string ss = i + "班";
@@ -42,11 +42,11 @@ namespace HuiNan2020OneClass.Pages.ClassNubers
                 }
 
                 var cl = new ClassNuber();
-                
+
                 cl.CreatTime = DateTime.Now;
                 cl.ClassNuberName = ss;
                 _context.ClassNuber.Add(cl);
-                
+
             }
             await _context.SaveChangesAsync();
 

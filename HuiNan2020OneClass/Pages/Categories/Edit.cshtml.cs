@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using HuiNan2020OneClass;
-using System.Linq.Expressions;
 
 namespace HuiNan2020OneClass.Pages.Categories
 {
@@ -24,7 +19,7 @@ namespace HuiNan2020OneClass.Pages.Categories
         public Category Category { get; set; }
         public string ErrMsg { get; set; }
 
-        
+
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -39,7 +34,7 @@ namespace HuiNan2020OneClass.Pages.Categories
             {
                 return NotFound();
             }
-            
+
             return Page();
         }
 
@@ -59,7 +54,7 @@ namespace HuiNan2020OneClass.Pages.Categories
             }
 
 
-            if(_context.Exp.FirstOrDefault(m=>m.CategoryID== Category.ID)!=null|| _context.Income.FirstOrDefault(m => m.CategoryID == Category.ID) != null)
+            if (_context.Exp.FirstOrDefault(m => m.CategoryID == Category.ID) != null)
             {
                 ErrMsg = "已使用，不能修改";
 

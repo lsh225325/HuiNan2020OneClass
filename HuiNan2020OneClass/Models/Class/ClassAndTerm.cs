@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HuiNan2020OneClass
 {
-    public class ClassAndTerm:Base
+    public class ClassAndTerm : Base
     {
+        //班级
+
         /// <summary>
         /// 班号
         /// </summary>
@@ -34,7 +34,7 @@ namespace HuiNan2020OneClass
         /// 学期号，1-18期
         /// </summary>
         [Range(1, 18)]
-        public int TermNuber { get; set; }
+        public int TermNuber { get; set; } = 1;
 
 
         /// <summary>
@@ -59,6 +59,6 @@ namespace HuiNan2020OneClass
         }
         */
 
-
+        public ICollection<ClassAndStudent> ClassAndStudents { get; set; }
     }
 }

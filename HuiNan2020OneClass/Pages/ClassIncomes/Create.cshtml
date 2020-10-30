@@ -1,0 +1,64 @@
+﻿@page
+@model HuiNan2020OneClass.Pages.ClassIncomes.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>新增班费收入</h1>
+
+<a>只用于记录班费收入</a>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label  class="control-label">学期</label>
+                <select asp-for="ClassIncome.ClassAndTermID" class ="form-control" asp-items="ViewBag.ClassAndTermID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassIncome.ReData" class="control-label"></label>
+                <input asp-for="ClassIncome.ReData" class="form-control" />
+                <span asp-validation-for="ClassIncome.ReData" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassIncome.Rdmark" class="control-label"></label>
+                <input asp-for="ClassIncome.Rdmark" class="form-control" />
+                <span asp-validation-for="ClassIncome.Rdmark" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">每人交费</label>
+                <input asp-for="ClassIncome.EveryoneMoney" class="form-control" />
+                <span asp-validation-for="ClassIncome.EveryoneMoney" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">总人数</label>
+                <input asp-for="ClassIncome.Count" class="form-control" />
+                <span asp-validation-for="ClassIncome.Count" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">总金额</label>
+                <input asp-for="ClassIncome.Money" class="form-control" />
+                <span asp-validation-for="ClassIncome.Money" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">类别</label>
+                <select asp-for="ClassIncome.CategoryID" class ="form-control" asp-items="ViewBag.CategoryID"></select>
+            </div>
+           
+            
+            <div class="form-group">
+                <input type="submit" value="保存" class="btn btn-primary form-control" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

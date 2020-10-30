@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using HuiNan2020OneClass;
-using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace HuiNan2020OneClass.Pages.Categories
 {
@@ -37,7 +32,7 @@ namespace HuiNan2020OneClass.Pages.Categories
                 return Page();
             }
 
-            if(_context.Category.FirstOrDefault(m=>m.CategoryName== Category.CategoryName)!=null)
+            if (_context.Category.FirstOrDefault(m => m.CategoryName == Category.CategoryName) != null)
             {
                 ErrMsg = "类别重复";
 

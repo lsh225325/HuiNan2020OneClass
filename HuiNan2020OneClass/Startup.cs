@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
 
 namespace HuiNan2020OneClass
 {
@@ -25,15 +20,16 @@ namespace HuiNan2020OneClass
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddControllersWithViews().AddNewtonsoftJson();
 
-            
-            
-            services.AddDbContext<AppContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("AppContext")));
 
 
             //services.AddDbContext<AppContext>(options =>
-            //        options.UseSqlite(Configuration.GetConnectionString("AppContext")));
+            //       options.UseSqlServer(Configuration.GetConnectionString("AppContext")));
+
+
+            services.AddDbContext<AppContext>(options =>
+                   options.UseSqlite(Configuration.GetConnectionString("AppContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

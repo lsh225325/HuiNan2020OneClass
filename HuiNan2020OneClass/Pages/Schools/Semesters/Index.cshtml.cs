@@ -14,7 +14,7 @@ namespace HuiNan2020OneClass.Pages.Schools.Semesters
             _context = context;
         }
 
-        public IList<Semester> Semester { get;set; }
+        public IList<Semester> Semester { get; set; }
 
         public async Task OnGetAsync()
         {
